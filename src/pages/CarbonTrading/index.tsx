@@ -78,12 +78,11 @@ const carbonCredits = [
   },
 ];
 
-import { fetchCities } from "@/api/city";
 import CarbonCreditGrid from "@/components/carbonCreditGrid";
 import FilterBar from "@/components/filterBar";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 interface SearchParams {
   term: string;
@@ -100,30 +99,56 @@ const CarbonCredits = () => {
     locations: [],
     order: "highToLow",
   });
-  const [taiwanCities, setTaiwanCities] = useState<
-    { id: number; label: string; value: string }[]
-  >([]);
+  // const [taiwanCities, setTaiwanCities] = useState<
+  //   { id: number; label: string; value: string }[]
+  // >([]);
 
-  useEffect(() => {
-    fetchCities()
-      .then((response) => {
-        if (response.code === 200) {
-          const citiesWithStringId = response.data.map(
-            (city: { id: number; label: string; value: string }) => ({
-              ...city,
-              id: city.id.toString(),
-            })
-          );
-          setTaiwanCities(citiesWithStringId);
-          console.log("Fetched cities:", citiesWithStringId);
-        } else {
-          console.error("Failed to fetch cities:", response);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching cities:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetchCities()
+  //     .then((response) => {
+  //       if (response.code === 200) {
+  //         const citiesWithStringId = response.data.map(
+  //           (city: { id: number; label: string; value: string }) => ({
+  //             ...city,
+  //             id: city.id.toString(),
+  //           })
+  //         );
+  //         setTaiwanCities(citiesWithStringId);
+  //         console.log("Fetched cities:", citiesWithStringId);
+  //       } else {
+  //         console.error("Failed to fetch cities:", response);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching cities:", error);
+  //     });
+  // }, []);
+
+  // 台灣縣市選項
+  const taiwanCities = [
+    { label: "台北市", value: "台北市" },
+    { label: "新北市", value: "新北市" },
+    { label: "桃園市", value: "桃園市" },
+    { label: "台中市", value: "台中市" },
+    { label: "台南市", value: "台南市" },
+    { label: "高雄市", value: "高雄市" },
+    { label: "基隆市", value: "基隆市" },
+    { label: "新竹市", value: "新竹市" },
+    { label: "嘉義市", value: "嘉義市" },
+    { label: "宜蘭縣", value: "宜蘭縣" },
+    { label: "新竹縣", value: "新竹縣" },
+    { label: "桃園縣", value: "桃園縣" },
+    { label: "苗栗縣", value: "苗栗縣" },
+    { label: "台中縣", value: "台中縣" },
+    { label: "南投縣", value: "南投縣" },
+    { label: "彰化縣", value: "彰化縣" },
+    { label: "台南縣", value: "台南縣" },
+    { label: "高雄縣", value: "高雄縣" },
+    { label: "屏東縣", value: "屏東縣" },
+    { label: "澎湖縣", value: "澎湖縣" },
+    { label: "金門縣", value: "金門縣" },
+    { label: "連江縣", value: "連江縣" },
+  ];
 
   const sortedAndFilteredCarbonCredits = useMemo(() => {
     const filtered = carbonCredits.filter(

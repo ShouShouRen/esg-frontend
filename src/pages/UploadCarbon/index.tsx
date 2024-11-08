@@ -16,7 +16,7 @@ import { useState } from "react";
 
 const UploadCarbon = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hasCarbon, setHasCarbon] = useState(false);
+  // const [hasCarbon, setHasCarbon] = useState(false);
   const [form] = Form.useForm();
 
   // 台灣縣市選項
@@ -45,7 +45,17 @@ const UploadCarbon = () => {
     { label: "連江縣", value: "連江縣" },
   ];
 
-  const handleSubmit = async (values: any) => {
+  interface FormValues {
+    location: string;
+    description?: string;
+    price: number;
+    carbonAmount: number;
+    needStaff: boolean;
+    images: any[];
+    contact: string;
+  }
+
+  const handleSubmit = async (values: FormValues) => {
     console.log("Form values:", values);
   };
 
@@ -68,11 +78,14 @@ const UploadCarbon = () => {
             </Button>
           </div>
         </div>
-        {hasCarbon && (
+        {/* {hasCarbon && (
           <div className="flex justify-center items-center h-60">
             <p className="text-lg text-gray-500">尚未上架碳匯</p>
           </div>
-        )}
+        )} */}
+        <div className="flex justify-center items-center h-60">
+          <p className="text-lg text-gray-500">尚未上架碳匯</p>
+        </div>
       </Content>
       <Footer />
       <Modal
