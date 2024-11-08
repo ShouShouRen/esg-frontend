@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  height: inherit;
+}
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-primary font-semibold text-lg no-underline px-2 py-2 transition-all duration-100;
+
+    @media (min-width: 768px) {
+      &:hover {
+        @apply outline-primary text-blue-400;
+      }
+    }
+  }
+}
+
+.mask-dark {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero {
+  padding-block: 4.6em;
+}
+.hero-lg {
+  padding-block: 7.4em;
+}
+.hero-xl {
+  padding-block: 10.4em;
+}
+
+section#about {
+  background-image: url("../image/bg.png");
+}
+
+.text-shadow {
+  text-shadow: 5px -5px 0px #fff;
+}
