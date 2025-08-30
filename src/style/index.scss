@@ -1,0 +1,365 @@
+// Green energy replacement theme
+$green-50: #ecfdf5;
+$green-100: #d1fae5;
+$green-200: #a7f3d0;
+$green-300: #6ee7b7;
+$green-400: #34d399;
+$green-500: #10b981;
+$green-600: #059669;
+$teal-500: #14b8a6;
+$emerald-600: #059669;
+$forest-900: #064e3b;
+$slate-900: #0f172a;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (min-width: 768px) {
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 992px) {
+    padding-inline: 2rem;
+  }
+}
+
+.bg-hero-green {
+  background: radial-gradient(
+      1200px 600px at 20% -10%,
+      rgba($green-300, 0.45),
+      transparent 60%
+    ),
+    radial-gradient(
+      1200px 600px at 80% 10%,
+      rgba($teal-500, 0.35),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #ffffff 0%, $green-50 100%);
+}
+
+.text-gradient-green {
+  background: linear-gradient(90deg, $emerald-600, $teal-500);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section {
+  padding-block: 3.5rem;
+  @media (min-width: 768px) {
+    padding-block: 5rem;
+  }
+}
+
+.card-elevated {
+  background: #fff;
+  border: 1px solid rgba(20, 184, 166, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(16, 185, 129, 0.18);
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  background: rgba(20, 184, 166, 0.1);
+  color: $emerald-600;
+  font-weight: 600;
+}
+
+.hero-title {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.site-header {
+  .nav-menu a,
+  .nav-menu button {
+    color: #334155 !important;
+  }
+  .nav-menu a:hover,
+  .nav-menu button:hover {
+    color: #059669 !important;
+    background-color: rgba(16, 185, 129, 0.08) !important;
+  }
+  a {
+    color: #334155 !important;
+    text-decoration: none !important;
+  }
+  a:hover {
+    color: #059669 !important;
+  }
+}
+
+.auth-hero {
+  background: radial-gradient(
+      800px 400px at 10% 0%,
+      rgba($green-300, 0.35),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 400px at 90% 20%,
+      rgba($teal-500, 0.25),
+      transparent 60%
+    ),
+    linear-gradient(135deg, #e6fff7 0%, #f0fffb 100%);
+}
+
+.auth-card {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  box-shadow: 0 20px 50px rgba(16, 185, 129, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, $green-500 0%, $teal-500 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.login-form {
+  .ant-tabs-ink-bar {
+    background: $green-500 !important;
+    height: 3px !important;
+    border-radius: 2px;
+  }
+
+  .ant-tabs-tab {
+    color: #64748b;
+  }
+
+  .ant-tabs-tab:hover,
+  .ant-tabs-tab-active {
+    color: $green-600 !important;
+  }
+
+  .ant-input:focus,
+  .ant-input-password:focus,
+  .ant-input:hover,
+  .ant-input-password:hover {
+    border-color: $green-500 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
+    background: white !important;
+  }
+
+  a {
+    color: $green-600;
+    text-decoration: none;
+    &:hover {
+      color: #047857;
+    }
+  }
+}
+
+.btn-primary.ant-btn-primary,
+.btn-primary.ant-btn-primary:hover,
+.btn-primary.ant-btn-primary:focus {
+  background: linear-gradient(135deg, $green-500 0%, $teal-500 100%) !important;
+  border-color: transparent !important;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35) !important;
+}
+
+.filter-select {
+  min-height: 48px !important;
+
+  .ant-select-selector {
+    min-height: 48px !important;
+    height: auto !important;
+    border-radius: 16px !important;
+    border: 2px solid #d1fae5 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.05) !important;
+    padding: 8px 12px !important;
+
+    &:hover,
+    &:focus {
+      border-color: #a7f3d0 !important;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15) !important;
+    }
+  }
+
+  // 確保選中的標籤不會換行
+  .ant-select-selection-overflow {
+    flex-wrap: nowrap !important;
+  }
+
+  &.ant-select-focused .ant-select-selector {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
+  }
+
+  .ant-select-selection-placeholder {
+    color: #9ca3af !important;
+    font-weight: 500 !important;
+  }
+
+  .ant-select-selection-item {
+    background: linear-gradient(90deg, #10b981, #14b8a6) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    margin: 2px !important;
+    padding: 2px 8px !important;
+  }
+
+  .ant-select-selection-item-remove {
+    color: rgba(255, 255, 255, 0.7) !important;
+
+    &:hover {
+      color: white !important;
+    }
+  }
+}
+
+.ant-input-affix-wrapper {
+  &:hover,
+  &:focus,
+  &:focus-within {
+    .ant-input {
+      background: white !important;
+    }
+  }
+}
+
+.filter-bar {
+  .ant-btn {
+    height: 48px !important;
+    min-height: 48px !important;
+  }
+}
+
+.ant-select-dropdown {
+  border-radius: 16px !important;
+  box-shadow: 0 20px 50px rgba(16, 185, 129, 0.15) !important;
+  border: 1px solid #d1fae5 !important;
+  overflow: hidden;
+
+  .ant-select-item {
+    border-radius: 8px !important;
+    margin: 4px 8px !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background: linear-gradient(90deg, #ecfdf5, #d1fae5) !important;
+      color: #059669 !important;
+    }
+
+    &.ant-select-item-option-selected {
+      background: linear-gradient(90deg, #10b981, #14b8a6) !important;
+      color: white !important;
+      font-weight: 600 !important;
+    }
+  }
+}
+
+// CustomButton 樣式 - 覆蓋 Ant Design 的全局樣式
+.custom-button {
+  color: white !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    color: white !important;
+    text-decoration: none !important;
+  }
+
+  .custom-button-text {
+    color: white !important;
+    font-weight: 700 !important;
+  }
+
+  .custom-button-icon {
+    color: white !important;
+  }
+}
+
+.custom-button-primary {
+  background: linear-gradient(90deg, #10b981, #22c55e, #14b8a6) !important;
+  color: white !important;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    color: white !important;
+  }
+}
+
+.custom-button-secondary {
+  background: rgba(5, 150, 105, 0.8) !important;
+  color: white !important;
+  border: 2px solid rgba(52, 211, 153, 0.5) !important;
+
+  &:hover {
+    background: rgb(5, 150, 105) !important;
+    color: white !important;
+    border-color: rgb(52, 211, 153) !important;
+  }
+
+  &:focus,
+  &:active,
+  &:visited {
+    color: white !important;
+  }
+}
+
+// 強制覆蓋 Ant Design 的連結樣式
+a.custom-button,
+button.custom-button {
+  color: white !important;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    color: white !important;
+  }
+
+  * {
+    color: inherit !important;
+  }
+}
+
+// 最高優先級覆蓋 Ant Design 樣式
+:where(.css-dev-only-do-not-override-1lvhsir) a.custom-button,
+:where(.css-dev-only-do-not-override-1lvhsir) button.custom-button {
+  color: white !important;
+  text-decoration: none !important;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:visited {
+    color: white !important;
+    text-decoration: none !important;
+  }
+}
