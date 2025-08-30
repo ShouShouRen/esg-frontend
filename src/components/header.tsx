@@ -1,445 +1,225 @@
-// import logo from "@/image/logo.png";
-
-// const Header = () => {
-//   return (
-//     <header className="fixed w-full py-2 bg-rose-400 bg-white/50 shadow-lg backdrop-blur-md z-50">
-//       <nav className="container flex flex-col justify-center md:flex-row md:items-center justify-between p-4">
-//         <a className="block" href="index">
-//           <img
-//             src={logo}
-//             alt=""
-//             className="w-16 h-16 object-contain"
-//             height="62"
-//           />
-//         </a>
-//         <ul className="flex flex-col md:flex-row md:items-center">
-//           <li className="px-1 py-3 md:py-0">
-//             <a className="nav-link" aria-current="page" href="rcarbon">
-//               碳匯交易
-//             </a>
-//           </li>
-//           <li className="px-1 py-3 md:py-0">
-//             <a className="nav-link" aria-current="page" href="registJob">
-//               申請工作
-//             </a>
-//           </li>
-//           <li className="px-1 py-3 md:py-0">
-//             <a className="nav-link" aria-current="page" href="state">
-//               查看狀態
-//             </a>
-//           </li>
-//           <li className="px-1 py-3 md:py-0">
-//             <a className="nav-link" aria-current="page" href="admin">
-//               管理員審核
-//             </a>
-//           </li>
-//           <li className="px-1 py-3 md:py-0">
-//             <a
-//               className="nav-link"
-//               aria-current="page"
-//               href=""
-//               data-bs-toggle="modal"
-//               data-bs-target="#login"
-//             >
-//               登入/註冊
-//             </a>
-//           </li>
-//           <li className="px-1 py-3 md:py-0">
-//             <a className="nav-link" aria-current="page" href="logout">
-//               登出
-//             </a>
-//           </li>
-//         </ul>
-//       </nav>
-//     </header>
-//   );
-// };
-// export default Header;
-
-// import { useState } from "react";
-// import logo from "@/image/logo.png";
-// import { Link } from "react-router-dom";
-
-// const Header = () => {
-//   const [menuOpen, setMenuOpen] = useState(false);
-
-//   const toggleMenu = () => {
-//     setMenuOpen(!menuOpen);
-//   };
-
-//   return (
-//     <header className="fixed w-full py-2 bg-white shadow-lg z-50">
-//       <nav className="flex justify-between items-center px-4 md:px-8">
-//         {/* Logo */}
-//         <a className="block" href="index">
-//           <img
-//             src={logo}
-//             alt="Logo"
-//             className="w-16 h-16 object-contain"
-//             height="62"
-//           />
-//         </a>
-
-//         {/* Desktop Menu */}
-//         <ul className="hidden md:flex space-x-6 items-center">
-//           <li>
-//             <a className="nav-link" href="rcarbon">
-//               碳匯交易
-//             </a>
-//           </li>
-//           <li>
-//             <a className="nav-link" href="registJob">
-//               申請工作
-//             </a>
-//           </li>
-//           <li>
-//             <a className="nav-link" href="state">
-//               查看狀態
-//             </a>
-//           </li>
-//           <li>
-//             <a className="nav-link" href="admin">
-//               管理員審核
-//             </a>
-//           </li>
-//           <li>
-//             <Link to="/auth" className="nav-link">
-//               登入/註冊
-//             </Link>
-//           </li>
-//         </ul>
-
-//         {/* Mobile Hamburger Icon and Login/Register */}
-//         <div className="flex items-center md:hidden">
-//           <Link to="/auth" className="nav-link">
-//             登入/註冊
-//           </Link>
-//           <button
-//             className="text-gray-700 focus:outline-none"
-//             onClick={toggleMenu}
-//           >
-//             <svg
-//               className="w-6 h-6"
-//               fill="none"
-//               stroke="currentColor"
-//               viewBox="0 0 24 24"
-//               xmlns="http://www.w3.org/2000/svg"
-//             >
-//               <path
-//                 strokeLinecap="round"
-//                 strokeLinejoin="round"
-//                 strokeWidth="2"
-//                 d={
-//                   menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
-//                 }
-//               ></path>
-//             </svg>
-//           </button>
-//         </div>
-
-//         {/* Mobile Menu with transition */}
-//         <ul
-//           className={`${
-//             menuOpen ? "max-h-max opacity-100" : "max-h-0 opacity-0"
-//           } overflow-hidden transition-all duration-300 ease-in-out absolute top-16 left-0 w-full bg-white shadow-md md:hidden`}
-//         >
-//           <li className="border-b my-7 ">
-//             <a className="nav-link" href="rcarbon">
-//               碳匯交易
-//             </a>
-//           </li>
-//           <li className="border-b my-7 ">
-//             <a className="nav-link" href="registJob">
-//               申請工作
-//             </a>
-//           </li>
-//           <li className="border-b my-7 ">
-//             <a className="nav-link" href="state">
-//               查看狀態
-//             </a>
-//           </li>
-//           <li className="border-b my-7 ">
-//             <a className="nav-link" href="admin">
-//               管理員審核
-//             </a>
-//           </li>
-//         </ul>
-//       </nav>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-// import { useState } from "react";
-// import logo from "@/image/logo.png";
-// import { Link } from "react-router-dom";
-
-// const Header = () => {
-//   const [menuOpen, setMenuOpen] = useState(false);
-
-//   const toggleMenu = () => {
-//     setMenuOpen(!menuOpen);
-//   };
-
-//   return (
-//     <header className="fixed w-full py-2 bg-white shadow-lg z-50">
-//       <nav className="flex justify-between items-center px-4 md:px-8">
-//         {/* Logo */}
-//         <a className="block" href="index">
-//           <img
-//             src={logo}
-//             alt="Logo"
-//             className="w-16 h-16 object-contain"
-//             height="62"
-//           />
-//         </a>
-
-//         {/* Desktop Menu */}
-//         <ul className="hidden md:flex space-x-6 items-center">
-//           <li>
-//             <a className="nav-link" href="rcarbon">
-//               碳匯交易
-//             </a>
-//           </li>
-//           <li>
-//             <a className="nav-link" href="registJob">
-//               申請工作
-//             </a>
-//           </li>
-//           <li>
-//             <a className="nav-link" href="state">
-//               查看狀態
-//             </a>
-//           </li>
-//           <li>
-//             <a className="nav-link" href="admin">
-//               管理員審核
-//             </a>
-//           </li>
-//           <li>
-//             <Link to="/auth" className="nav-link">
-//               登入/註冊
-//             </Link>
-//           </li>
-//         </ul>
-
-//         {/* Mobile Hamburger Icon and Login/Register */}
-//         <div className="flex items-center md:hidden">
-//           <Link to="/auth" className="nav-link">
-//             登入/註冊
-//           </Link>
-//           <button
-//             className="text-gray-700 focus:outline-none"
-//             onClick={toggleMenu}
-//           >
-//             <svg
-//               className="w-6 h-6"
-//               fill="none"
-//               stroke="currentColor"
-//               viewBox="0 0 24 24"
-//               xmlns="http://www.w3.org/2000/svg"
-//             >
-//               <path
-//                 strokeLinecap="round"
-//                 strokeLinejoin="round"
-//                 strokeWidth="2"
-//                 d={
-//                   menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
-//                 }
-//               ></path>
-//             </svg>
-//           </button>
-//         </div>
-
-//         {/* Mobile Menu with transition */}
-//         <ul
-//           className={`${
-//             menuOpen ? "max-h-max opacity-100" : "max-h-0 opacity-0"
-//           } overflow-hidden transition-all duration-300 ease-in-out absolute top-16 left-0 w-full bg-white shadow-md md:hidden`}
-//         >
-//           <li className="border-b my-7 ">
-//             <a className="nav-link" href="rcarbon">
-//               碳匯交易
-//             </a>
-//           </li>
-//           <li className="border-b my-7 ">
-//             <a className="nav-link" href="registJob">
-//               申請工作
-//             </a>
-//           </li>
-//           <li className="border-b my-7 ">
-//             <a className="nav-link" href="state">
-//               查看狀態
-//             </a>
-//           </li>
-//           <li className="border-b my-7 ">
-//             <a className="nav-link" href="admin">
-//               管理員審核
-//             </a>
-//           </li>
-//         </ul>
-//       </nav>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-import { useState, useEffect } from "react";
-import logo from "@/image/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { App as AntdApp } from "antd";
+import {
+  Leaf,
+  TreePine,
+  Menu,
+  X,
+  LogOut,
+  User,
+  Settings,
+  TrendingUp,
+  Upload,
+  Eye,
+} from "lucide-react";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
+    () => !!localStorage.getItem("token")
+  );
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const { message } = AntdApp.useApp();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
+    const syncAuth = () => setIsLoggedIn(!!localStorage.getItem("token"));
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("storage", syncAuth);
+    window.addEventListener("auth:changed", syncAuth as EventListener);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("storage", syncAuth);
+      window.removeEventListener("auth:changed", syncAuth as EventListener);
+    };
   }, []);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
-    navigate("/"); // 登出後導向首頁
+    window.dispatchEvent(new Event("auth:changed"));
+    message.success("登出成功");
+    navigate("/");
   };
 
+  const navItems = [
+    { to: "/carbon-trading", text: "碳匯交易", icon: TrendingUp },
+    { to: "/upload-carbon", text: "上架碳匯", icon: Upload },
+    { to: "/state", text: "查看狀態", icon: Eye },
+    { to: "/admin", text: "管理員審核", icon: Settings },
+    { to: "/account", text: "帳號管理", icon: User },
+    { text: "登出", isButton: true, onClick: handleLogout, icon: LogOut },
+  ];
+
   return (
-    <header className="fixed w-full py-2 bg-white shadow-lg z-50">
-      <nav className="flex justify-between items-center px-4 md:px-8">
-        {/* Logo */}
-        <Link className="block" to="/">
-          <img
-            src={logo}
-            alt="Logo"
-            className="w-16 h-16 object-contain"
-            height="62"
-          />
-        </Link>
+    <>
+      <div className="fixed top-0 left-0 w-full h-20 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/5 via-green-800/5 to-teal-900/5" />
+        <div className="absolute top-0 left-1/4 w-32 h-32 bg-green-400/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-0 right-1/3 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl animate-pulse delay-1000" />
+      </div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6 items-center">
-          {isLoggedIn ? (
-            <>
-              <li>
-                <Link to="/carbon-trading" className="nav-link">
-                  碳匯交易
-                </Link>
-              </li>
-              <li>
-                <Link to="/upload-carbon" className="nav-link">
-                  上架碳匯
-                </Link>
-              </li>
-              <li>
-                <a className="nav-link" href="state">
-                  查看狀態
-                </a>
-              </li>
-              <li>
-                <a className="nav-link" href="admin">
-                  管理員審核
-                </a>
-              </li>
-              <li>
-                <button onClick={handleLogout} className="nav-link">
-                  登出
-                </button>
-              </li>
-            </>
-          ) : (
-            <li>
-              <Link to="/auth" className="nav-link">
-                登入/註冊
-              </Link>
-            </li>
-          )}
-        </ul>
+      <header
+        className={`site-header fixed top-0 w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-xl shadow-lg border-b border-green-100/50"
+            : "bg-gradient-to-r from-white/80 via-green-50/60 to-emerald-50/80 backdrop-blur-md"
+        }`}
+      >
+        <div className="h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500" />
 
-        {/* Mobile Hamburger Icon and Login/Register */}
-        <div className="flex items-center md:hidden">
-          {/* {isLoggedIn ? (
-            <button onClick={handleLogout} className="nav-link">
-              登出
-            </button>
-          ) : (
-            <Link to="/auth" className="nav-link">
-              登入/註冊
-            </Link>
-          )} */}
-          <button
-            className="text-gray-700 focus:outline-none"
-            onClick={toggleMenu}
+        <nav className="container mx-auto flex justify-between items-center px-6 py-4">
+          <a
+            className="flex items-center gap-3 group hover:scale-105 transition-all duration-300 cursor-pointer"
+            href="/"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d={
-                  menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
-                }
-              ></path>
-            </svg>
-          </button>
-        </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-xl blur-sm opacity-30 group-hover:opacity-50 transition-opacity" />
+              <div className="relative bg-gradient-to-r from-green-500 to-emerald-600 p-2.5 rounded-xl shadow-lg">
+                <TreePine className="w-6 h-6 text-white" />
+              </div>
+            </div>
+            <div className="hidden sm:block">
+              <h1 className="font-bold text-xl bg-gradient-to-r from-green-700 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                ESG 碳匯平台
+              </h1>
+              <p className="text-xs text-green-600/80 font-medium">
+                Carbon Trading Platform
+              </p>
+            </div>
+          </a>
 
-        {/* Mobile Menu with transition */}
-        <ul
-          className={`${
-            menuOpen ? "max-h-max opacity-100" : "max-h-0 opacity-0"
-          } overflow-hidden transition-all duration-300 ease-in-out absolute top-16 left-0 w-full bg-white shadow-md md:hidden`}
-        >
-          {isLoggedIn ? (
-            <>
-              <li className="border-b my-7">
-                <Link to="/carbon-trading" className="nav-link">
-                  碳匯交易
-                </Link>
-              </li>
-              <li className="border-b my-7">
-                <Link to="/upload-carbon" className="nav-link">
-                  上架碳匯
-                </Link>
-              </li>
-              <li className="border-b my-7">
-                <a className="nav-link" href="state">
-                  查看狀態～
+          <div className="hidden lg:flex items-center gap-2">
+            {isLoggedIn &&
+              navItems.map((item, index) => (
+                <div key={index}>
+                  {item.isButton ? (
+                    <button
+                      onClick={item.onClick}
+                      className="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:text-emerald-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 transition-all duration-200 "
+                    >
+                      {item.text}
+                    </button>
+                  ) : (
+                    <a
+                      href={item.to}
+                      className="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:text-emerald-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 transition-all duration-200"
+                    >
+                      {item.text}
+                    </a>
+                  )}
+                </div>
+              ))}
+
+            {!isLoggedIn && (
+              <div className="ml-4">
+                <a
+                  href="/auth"
+                  className="relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white font-semibold text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden group cursor-pointer"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <Leaf className="w-4 h-4 relative z-10" />
+                  <span className="relative z-10">開始使用</span>
+                  <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12" />
                 </a>
-              </li>
-              <li className="border-b my-7">
-                <a className="nav-link" href="admin">
-                  管理員審核
-                </a>
-              </li>
-              <li className="border-b my-7">
-                <button onClick={handleLogout} className="nav-link">
-                  登出
-                </button>
-              </li>
-            </>
-          ) : (
-            <li className="border-b my-7">
-              <Link to="/auth" className="nav-link">
-                登入/註冊
-              </Link>
-            </li>
-          )}
-        </ul>
-      </nav>
-    </header>
+              </div>
+            )}
+          </div>
+
+          <div className="flex items-center lg:hidden">
+            <button
+              className="relative p-3 text-slate-700 hover:text-emerald-600 focus:outline-none rounded-xl hover:bg-green-50/80 transition-all duration-200"
+              onClick={toggleMenu}
+              aria-label="Toggle menu"
+            >
+              <div className="w-6 h-6 relative">
+                <Menu
+                  className={`absolute inset-0 transition-all duration-300 ${
+                    menuOpen ? "opacity-0 rotate-90" : "opacity-100"
+                  }`}
+                />
+                <X
+                  className={`absolute inset-0 transition-all duration-300 ${
+                    menuOpen ? "opacity-100" : "opacity-0 -rotate-90"
+                  }`}
+                />
+              </div>
+            </button>
+          </div>
+
+          <div
+            className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
+              menuOpen ? "visible" : "invisible"
+            }`}
+          >
+            <div
+              className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
+                menuOpen ? "opacity-100" : "opacity-0"
+              }`}
+              onClick={() => setMenuOpen(false)}
+            />
+
+            <div
+              className={`absolute top-[81px] left-4 right-4 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl ring-1 ring-green-100/50 overflow-hidden transition-all duration-300 ${
+                menuOpen
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 -translate-y-4"
+              }`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="h-1 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-500" />
+
+              <div className="py-3">
+                {isLoggedIn &&
+                  navItems.map((item, index) => (
+                    <div key={index} className="px-2">
+                      {item.isButton ? (
+                        <button
+                          onClick={() => {
+                            setMenuOpen(false);
+                            if (typeof item.onClick === "function") {
+                              item.onClick();
+                            }
+                          }}
+                          className="flex items-center gap-3 w-full px-4 py-3.5 rounded-xl text-left text-slate-700 hover:text-emerald-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 transition-all duration-200 group"
+                        >
+                          <span className="font-medium">{item.text}</span>
+                        </button>
+                      ) : (
+                        <a
+                          href={item.to}
+                          className="flex items-center gap-3 px-4 py-3.5 rounded-xl text-slate-700 hover:text-emerald-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 transition-all duration-200 group cursor-pointer"
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          <span className="font-medium">{item.text}</span>
+                        </a>
+                      )}
+                    </div>
+                  ))}
+
+                {!isLoggedIn && (
+                  <div className="px-2 pt-3 pb-1">
+                    <a
+                      href="/auth"
+                      onClick={() => setMenuOpen(false)}
+                      className="flex items-center justify-center gap-2 w-full px-4 py-3.5 rounded-xl bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 text-white font-semibold shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 cursor-pointer"
+                    >
+                      <Leaf className="w-5 h-5" />
+                      開始使用
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+    </>
   );
 };
 

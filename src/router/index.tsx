@@ -2,6 +2,7 @@ import PrivateRoute from "@/components/privateRoute";
 import { Home, NotFound, UploadCarbon } from "@/pages";
 import LoginSignup from "@/pages/Auth";
 import CarbonTrading from "@/pages/CarbonTrading";
+import AccountManagement from "@/pages/AccountManagement";
 
 const routes = [
   {
@@ -23,6 +24,10 @@ const routes = [
   {
     path: "/upload-carbon",
     element: <PrivateRoute element={<UploadCarbon />} />,
+  },
+  {
+    path: "/account",
+    element: <PrivateRoute element={<AccountManagement />} />,
   },
 ];
 

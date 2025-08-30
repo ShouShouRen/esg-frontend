@@ -78,7 +78,7 @@ const carbonCredits = [
   },
 ];
 
-import CarbonCreditGrid from "@/components/carbonCreditGrid";
+import CarbonCreditGrid from "@/components/carbon-credit-grid";
 import FilterBar from "@/components/filterBar";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
@@ -92,39 +92,13 @@ interface SearchParams {
 
 const CarbonCredits = () => {
   const [value, setValue] = useState<string[]>([]);
-  const [sortOrder, setSortOrder] = useState("highToLow");
   const [searchTerm, setSearchTerm] = useState("");
   const [searchParams, setSearchParams] = useState<SearchParams>({
     term: "",
     locations: [],
     order: "highToLow",
   });
-  // const [taiwanCities, setTaiwanCities] = useState<
-  //   { id: number; label: string; value: string }[]
-  // >([]);
 
-  // useEffect(() => {
-  //   fetchCities()
-  //     .then((response) => {
-  //       if (response.code === 200) {
-  //         const citiesWithStringId = response.data.map(
-  //           (city: { id: number; label: string; value: string }) => ({
-  //             ...city,
-  //             id: city.id.toString(),
-  //           })
-  //         );
-  //         setTaiwanCities(citiesWithStringId);
-  //         console.log("Fetched cities:", citiesWithStringId);
-  //       } else {
-  //         console.error("Failed to fetch cities:", response);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching cities:", error);
-  //     });
-  // }, []);
-
-  // 台灣縣市選項
   const taiwanCities = [
     { label: "台北市", value: "台北市" },
     { label: "新北市", value: "新北市" },
@@ -169,7 +143,7 @@ const CarbonCredits = () => {
     setSearchParams({
       term: searchTerm.trim(),
       locations: value,
-      order: sortOrder,
+      order: "highToLow",
     });
   };
 
@@ -182,8 +156,6 @@ const CarbonCredits = () => {
           setSearchTerm={setSearchTerm}
           value={value}
           setValue={setValue}
-          sortOrder={sortOrder}
-          setSortOrder={setSortOrder}
           handleSearch={handleSearch}
           taiwanCities={taiwanCities}
         />

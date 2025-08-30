@@ -1,64 +1,56 @@
-import { message } from "antd";
 import axios from "axios";
 import type { AxiosError, AxiosRequestConfig } from "axios";
 
-// 基本響應格式
 interface IBase<T = string | null> {
   data: T;
   code: number;
   message: string;
 }
 
-// 嵌套數據格式
 interface INestedData {
   message: string;
   data?: string;
 }
 
-// 基本 URL 配置
-const BASE_URL = "http://localhost:3000";
-const request = axios.create({ baseURL: `${BASE_URL}` });
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+const request = axios.create({ baseURL: `${BASE_URL}`, timeout: 10000 });
 
-// 錯誤處理函數，將錯誤轉換為 AxiosError 格式
 const handleErrorType = (error: Error): AxiosError<IBase<INestedData>> => {
   return error as AxiosError<IBase<INestedData>>;
 };
 
-// 請求攔截器，用於添加認證標頭
 request.interceptors.request.use((config) => {
-  const token = JSON.parse(localStorage.getItem("token") as string)?.data;
-  if (token) {
-    config.headers.Authorization = token;
+  let token: string | undefined;
+  const raw = localStorage.getItem("token");
+  if (raw) {
+    try {
+      const parsed = JSON.parse(raw);
+      token = parsed?.data || parsed?.token || parsed;
+    } catch {
+      token = raw;
+    }
   }
-
+  if (token) {
+    (config.headers as any).Authorization = token;
+  }
   return config;
 });
 
-// 響應攔截器，用於處理成功與錯誤響應
 request.interceptors.response.use(
-  (response) => {
-    const data = response?.data as IBase<INestedData>;
-
-    // 如果返回的 code 為 200，並且有消息，則顯示成功消息
-    if (data.code === 200 && data.data?.message) {
-      message.success(data.data.message);
-    }
-
-    return response;
-  },
-  (error) => {
-    const { response } = handleErrorType(error) || {};
-    // 顯示警告消息，當錯誤沒有明確消息時，顯示 "未知錯誤"
-    message.error(response?.data?.message ?? "未知錯誤");
-  }
+  (response) => response,
+  (error) => Promise.reject(error)
 );
 
-// 發送請求函數
 const makeRequest = async <T>(
   url: string,
   options?: AxiosRequestConfig
 ): Promise<IBase<T>> => {
-  return (await request({ url, ...options })).data as IBase<T>;
+  try {
+    const response = await request({ url, ...options });
+    return response.data as IBase<T>;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export { BASE_URL, handleErrorType, makeRequest };

@@ -1,13 +1,11 @@
-import { Input, Select, Button } from "antd";
-import { useMediaQuery } from "react-responsive";
+import { Button, Input, Select } from "antd";
+import { MapPin, Search } from "lucide-react";
 
 interface FilterBarProps {
   searchTerm: string;
   setSearchTerm: (value: string) => void;
   value: string[];
   setValue: (value: string[]) => void;
-  sortOrder: string;
-  setSortOrder: (order: string) => void;
   handleSearch: () => void;
   taiwanCities: { value: string; label: string }[];
 }
@@ -16,54 +14,86 @@ const FilterBar = ({
   setSearchTerm,
   value,
   setValue,
-  sortOrder,
-  setSortOrder,
   handleSearch,
   taiwanCities,
 }: FilterBarProps) => {
-  const isWideScreen = useMediaQuery({ minWidth: 1280 });
   return (
-    <div className="flex-row md:flex justify-center lg:justify-end items-center w-full p-4 mt-8 lg:mt-0">
-      <h4 className="text-2xl pl-4 border-l-8 md:w-3/12 xl:w-2/12 font-bold border-lime-900">
-        碳匯交易
-      </h4>
-      <Input
-        className="h-10 text-lg w-full mt-4 md:mt-0 md:w-3/12 xl:w-6/12"
-        placeholder="請輸入商品名稱"
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onPressEnter={handleSearch}
-      />
-      <Select
-        // className="ml-4 w-full md:w-3/12 xl:w-4/12 text-lg"
-        className={`${
-          (value.length <= 2 && isWideScreen) ||
-          (value.length === 0 && !isWideScreen)
-            ? "h-10"
-            : ""
-        } ml-0 md:ml-2 mt-4 md:mt-0 w-full md:w-3/12 xl:w-4/12 text-lg ms-0`}
-        mode="multiple"
-        maxCount={3}
-        value={value}
-        onChange={setValue}
-        placeholder="請選擇地區"
-        options={taiwanCities}
-      />
-      <Select
-        className="h-10 ml-0 md:ml-2 mt-4 md:mt-0 w-full md:w-2/12 ms-0"
-        value={sortOrder}
-        onChange={setSortOrder}
-        placeholder="排序方式"
-      >
-        <Select.Option value="highToLow">價格高到低</Select.Option>
-        <Select.Option value="lowToHigh">價格低到高</Select.Option>
-      </Select>
-      <Button
-        className="h-10 md-0 md:ml-2 bg-primary w-full md:w-auto mt-4 md:mt-0 flex justify-center items-center"
-        type="primary"
-        onClick={handleSearch}
-      >
-        搜尋
-      </Button>
+    <div className="relative">
+      <div className="absolute -top-6 -left-4 w-24 h-24 bg-emerald-400/10 rounded-full blur-3xl" />
+      <div className="absolute -top-8 -right-6 w-32 h-32 bg-green-400/10 rounded-full blur-3xl" />
+
+      <div className="relative mb-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+              <span className="text-slate-600">線上項目</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Search className="w-4 h-4 text-green-500" />
+              <span className="text-slate-600">即時交易</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="filter-bar relative bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-emerald-100/50 p-6 md:p-8 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 via-green-500 to-teal-500 rounded-t-3xl" />
+
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
+            {/* 搜尋輸入框 */}
+            <div className="lg:col-span-5">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">
+                <Search className="w-4 h-4 inline-block mr-2" />
+                項目搜尋
+              </label>
+              <div className="relative group">
+                <Input
+                  className="h-12 text-base rounded-2xl border-2 border-emerald-100 hover:border-emerald-300 focus:border-emerald-500 transition-all duration-300 shadow-sm"
+                  placeholder="輸入項目名稱..."
+                  prefix={<Search className="w-4 h-4 text-emerald-400" />}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onPressEnter={handleSearch}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/10 to-green-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              </div>
+            </div>
+
+            {/* 地區選擇 */}
+            <div className="lg:col-span-4">
+              <label className="block text-sm font-semibold text-slate-700 mb-2">
+                <MapPin className="w-4 h-4 inline-block mr-2" />
+                項目地區
+              </label>
+              <Select
+                className="filter-select w-full"
+                style={{ minHeight: "48px" }}
+                mode="multiple"
+                maxCount={3}
+                value={value}
+                onChange={setValue}
+                placeholder="選擇地區..."
+                options={taiwanCities}
+                suffixIcon={<MapPin className="w-4 h-4 text-emerald-400" />}
+              />
+            </div>
+
+            {/* 搜尋按鈕 */}
+            <div className="lg:col-span-3 flex items-end">
+              <Button
+                className="h-12 w-full rounded-2xl bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 border-0 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 group relative overflow-hidden"
+                type="primary"
+                onClick={handleSearch}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-green-400 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <Search className="w-4 h-4 relative z-10" />
+                <span className="relative z-10">搜尋項目</span>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
